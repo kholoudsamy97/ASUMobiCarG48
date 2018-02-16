@@ -3,7 +3,7 @@ This is a unique project for 2'nd Electrical students about smart car controlled
 Team members of this project: 
 
 ### Kholoud Hussein Samy
-### Gehad Osama Ahmef
+### Gehad Osama Ahmed
 ### Basma Gharib Adli
 ### Basma Hassan Mohamed
 ### Aya Magdi Abid
