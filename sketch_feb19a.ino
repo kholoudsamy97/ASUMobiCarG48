@@ -1,17 +1,28 @@
 
-const byte LED =10;
+const byte LED =13 ;
+const byte BTN=2;
+byte btnstates=0;
 
-
-void setup() 
+void setup()
 {
-pinMode (LED, OUTPUT);
+pinMode(LED,OUTPUT);
+pinMode (BTN,INPUT);
 }
 
 void loop()
 {
-digitalWrite (LED, HIGH );
-delay (1000);
-digitalWrite (LED, LOW );
-delay (1000);
+
+btnstates = digitalRead (BTN);
+if (btnstates==HIGH)
+{
+digitalWrite(LED,HIGH);
+}
+else 
+{
+  digitalWrite(LED,LOW);
 
 }
+
+}
+  
+  
