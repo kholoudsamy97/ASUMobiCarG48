@@ -1,1 +1,40 @@
 
+const int trigPin = 9 ;
+int outPin1 = 5 ;
+int outPin2 = 6;
+int outPin4 = 11;
+int outPin3 = 12;
+const int echoPin = 10;
+long duration ;
+long distance ;
+void setup()
+{
+ 
+       pinMode(outPin1,OUTPUT);
+    pinMode(outPin2,OUTPUT);
+    pinMode(outPin3,OUTPUT);
+    pinMode(outPin4,OUTPUT);
+    pinMode(trigPin,OUTPUT);
+    pinMode(echoPin,INPUT);
+    Serial.begin(9600);
+    
+} 
+void loop ()
+{
+    digitalWrite(trigPin,LOW);
+    delay(2000);
+    digitalWrite(trigPin,HIGH);
+    delay(10000);
+    digitalWrite(trigPin,LOW);
+    duration = pulseIn(echoPin,HIGH);
+    distance = duration * 0.034/2;
+    Serial.print("Distance:");
+    Serial.printIn(distance);
+    if (distance<=50)
+    {
+        digitalWrite(outPin1,LOW);
+         digitalWrite(outPin2,LOW);
+         digitalWrite(outPin3,LOW);
+         digitalWrite(outPin4,LOW);
+    }
+}
