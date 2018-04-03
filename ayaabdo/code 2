@@ -1,0 +1,107 @@
+#include <RedBot.h>
+
+RedBotSensor left_sen = RedBotSensor(A3);   
+RedBotSensor center_sen = RedBotSensor(A4); 
+RedBotSensor right_sen = RedBotSensor(A5);  
+
+#define en1 9
+#define in1 4
+#define in2 5
+#define en2 3
+#define in3 6
+#define in4 7
+int lineStandard = 800;
+
+
+void setup()
+{ pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  pinMode(en1, OUTPUT);
+  pinMode(en2, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("IR Sensor Readings:: ");
+  delay(1000);
+}
+
+void loop()
+{
+
+void setup()
+{ pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  pinMode(en1, OUTPUT);
+  pinMode(en2, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("IR Sensor Readings:: ");
+  delay(1000);
+}
+
+void loop()
+{
+  if(center_sen.read() > lineStandard)
+  {
+   right();
+  }
+  else if(right_sen.read() > lineStandard)
+  {
+  left();
+  }
+  else if(left_sen.read() > lineStandard)
+  {
+  right();
+  }
+  if((left_sen.read() > lineStandard) && (center_sen.read() > lineStandard) && (right_sen.read() > lineStandard) )
+  {
+    Stop ();
+  }
+else
+  {
+    forward();
+  }
+  delay(0);  
+}
+void right() {
+  analogWrite(en1,255);
+  analogWrite(en2,255);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+digitalWrite(in4, LOW);
+}
+void Stop () {
+  analogWrite(en1, 0);
+  analogWrite(en2, 0);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+}
+void left() {
+  analogWrite(en1, 255);
+  analogWrite(en2, 255);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+}
+void forward() {
+  analogWrite(en1, 255);
+  analogWrite(en2, 255);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+}
+void back(){
+
+   analogWrite(en1, 255);
+  analogWrite(en2, 255);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2,HIGH);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+}
