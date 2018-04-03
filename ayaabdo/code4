@@ -1,0 +1,28 @@
+pressure $ temperature sensor 
+
+void pinChangeIntISR()
+{
+
+  static boolean pin_state_new = LOW; 
+  static boolean pin_state_old = LOW; 
+  static unsigned long t_start = 0; 
+  static unsigned long t_start_old = 0; 
+  
+  pin_state_new = fastDigitalRead(p_input_pin_register,input_pin_bitMask);
+  if (pin_state_old != pin_state_new)
+  {
+  
+    if (pin_state_new == HIGH)
+    {
+      t_start = timer2.get_count(); 
+      pd = t_start - t_start_old; 
+      t_start_old = t_start; 
+    }
+    else 
+    {
+      unsigned long t_end = timer2.get_count(); 
+      pulseCounts = t_end - t_start; 
+      output_data = true;
+    }
+  }
+}
