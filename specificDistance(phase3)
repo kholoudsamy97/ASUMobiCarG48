@@ -1,0 +1,83 @@
+char x;
+float c =( 2.26/160);
+const int LeftMotorForward = 8;
+const int LeftMotorBackward = 12;
+const int RightMotorForward = 4;
+const int RightMotorBackward = 7;
+#define RF 4 //right forward 
+#define RB 7 // right backward
+#define LF 8  //left forward
+#define LB 12 //left backward 
+
+void forward(){
+  digitalWrite(RF, HIGH);
+  digitalWrite(RB, LOW);
+  digitalWrite(LF, HIGH);
+  digitalWrite(LB, LOW);
+  Serial.println("forword");
+  }
+  
+  void stop_motor(){
+  digitalWrite(RF, LOW);
+  digitalWrite(RB, LOW);
+  digitalWrite(LF, LOW);
+  digitalWrite(LB, LOW); 
+  Serial.println("stop"); 
+  }  
+  
+void Distance (float g)
+{
+ // Serial.println(g);
+float t = c * g;
+Serial.println(t);
+forward();
+delay(t*1000);
+stop_motor();
+}
+
+void setup() {
+ Serial.begin(9600);
+
+}
+
+void loop() {
+  if(x=='9'){
+  
+      Serial.println("enter distance");
+      delay(3000);
+      char k =Serial.read ();
+     int sum=0;
+      if(k=='t'){
+         
+           for(int i=1;i>-1;i--)
+       {char k =Serial.read ();
+        int m =k-'0';
+       Serial.println(m);
+      m=m*(pow(10,i)) ;
+     // Serial.println(m);
+      sum=sum+m ;
+     // Serial.println(sum);
+      }
+        }
+        if(k=='r'){
+         
+           for(int i=2;i>-1;i--)
+      {char k =Serial.read ();
+       int m =k-'0';
+      // Serial.println(m);
+      m=m*(pow(10,i)) ;
+      //Serial.println(m);
+      sum=sum+m ;
+     // Serial.println(sum);
+      
+          }
+          sum=sum+1;
+        }
+      
+      
+  Serial.println(sum);
+      Distance (sum);
+       
+      }
+
+}
