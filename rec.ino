@@ -1,0 +1,40 @@
+ Serial.println("rec");
+   analogWrite(de,155);  //right
+  analogWrite(in,165.25);
+
+
+        Distance(30);
+         delay(100);
+         Distance(30);
+      delay(100);
+        Distance(30);
+       delay(100);
+     Distance(20); 
+    delay(100);
+                       angle(90);
+      Distance(30);
+         delay(100);
+         Distance(30);
+      delay(100);
+        Distance(30);
+       delay(100);
+     Distance(20); 
+    delay(100);
+                   angle(90); 
+    Distance(30);
+         delay(100);
+         Distance(30);
+      delay(100);
+        Distance(30);
+       delay(100);
+     Distance(20); 
+    delay(100);
+                     angle(90);
+      Distance(30);
+         delay(100);
+         Distance(30);
+      delay(100);
+        Distance(30);
+       delay(100);
+     Distance(20); 
+                        angle(90);
